@@ -8,13 +8,11 @@ export class UserController {
 
   @Post()
   public async createUser(@Body() userData: UserDTO) {
-    const hashedPassword = await this.userService.hashPassword(
-      userData.password,
-    );
-    const newUserData = {
+    const hashedPassword = await this.userService.hashPassword(userData.password);
+    const hashedUserData = {
       ...userData,
       password: hashedPassword,
     };
-    return this.userService.createUser(newUserData);
+    return this.userService.createUser(hashedUserData);
   }
 }

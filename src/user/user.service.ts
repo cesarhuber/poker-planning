@@ -14,10 +14,7 @@ export class UserService {
     return result;
   }
 
-  public async checkPassword(
-    receivedPassword: string,
-    hashedPassword: string,
-  ): Promise<boolean> {
+  public async checkPassword(receivedPassword: string, hashedPassword: string): Promise<boolean> {
     return bcrypt.compare(receivedPassword, hashedPassword);
   }
 

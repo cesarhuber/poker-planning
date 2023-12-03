@@ -7,6 +7,8 @@ import { User } from './user/user.entity';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { RoomModule } from './room/room.module';
+import { Room } from './room/room.entity';
 
 @Module({
   imports: [
@@ -20,11 +22,12 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.SQL_USER,
       password: process.env.SQL_PASSWORD,
       database: 'poker_planning',
-      entities: [User],
+      entities: [User, Room],
       synchronize: true,
     }),
     UserModule,
     AuthModule,
+    RoomModule,
   ],
   controllers: [AppController],
   providers: [AppService],
